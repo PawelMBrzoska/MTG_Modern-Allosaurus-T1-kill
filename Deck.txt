@@ -1,4 +1,5 @@
 4 Allosaurus Rider
+4 Summoner's Pact
 2 Autochthon Wurm
 4 Botanical Sanctum
 4 Chancellor of the Tangle
@@ -15,7 +16,6 @@
 2 Serum Visions
 4 Turntimber Symbiosis
 1 Snow-Covered Forest
-4 Summoner's Pact
 2 Veil of Summer
 4 Waterlogged Grove
 1 Wild Cantor

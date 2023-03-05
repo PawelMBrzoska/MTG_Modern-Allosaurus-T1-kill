@@ -4,6 +4,7 @@ class Game:
     def __init__(self):
         self.life: int = 20
         self.win: bool = False
+        self.hand: list = []
         self.Allosaurus: int = 0
         self.Evo_neoform: int = 0
         self.Evo_eldritch: int = 0
@@ -15,11 +16,13 @@ class Game:
 
     def __str__(self):
         return f"""
-                
+                There is {self.Allosaurus} allosaurus, {self.free_mana} free mana, and {self.ug_lands} U/G lands to go on.
+                Evos: {self.Evo_neoform} neoforms and {self.Evo_eldritch} eldritch.
                 """
 
     def Game_setup(self, deck, handsize):
         self.life = 20
+        self.hand = []
         self.win = False
         self.Allosaurus = 0
         self.Evo_neoform = 0
@@ -30,10 +33,9 @@ class Game:
         self.ug_lands = 0
         self.free_mana = 0
         #Itterating through hand to get the game stat
-        hand = random.choices(deck, k=handsize)
-        for cards in hand:
+        self.hand = random.choices(deck, k=handsize)
+        for cards in self.hand:
             self.Converter(cards) #Using external converter to update the state of the game.
-        print(hand)
 
     def Converter(self, card):
     
@@ -134,9 +136,6 @@ class Game:
         elif card == "Wild Cantor":
             self.g_cards += 1
 
-        
-            
-
     def Combo(self):
     
         if self.Allosaurus > 0:
@@ -156,10 +155,6 @@ class Game:
 
         #while mana > 0:
 
-
-
-
-
 class Test:
     def __init__(self, deck):
         self.deck = deck
@@ -167,15 +162,19 @@ class Test:
         self.games: int
         self.grizzlehands: int
         self.noAllosaurus: int
+        self.noChancellor: int
         self.noEvo: int
 
     def __str__(self):
         ratio_win = (self.win/self.games)*100
         ratio_noallo = (self.noAllosaurus/self.games)*100
         ratio_noevo = (self.noEvo/self.games)*100
+        ratio_nochan = (self.noChancellor/self.games)*100
         return f"""
                 With this deck without mulligans you should win {self.win} out of {self.games} games. This is {ratio_win}%.
-                In {self.noAllosaurus} ({ratio_noallo}%) games there were no dino :C and in {self.noEvo} ({ratio_noevo}%) there were no evos.
+                In {self.noAllosaurus} ({ratio_noallo}%) games there was no dino.
+                In {self.noEvo} ({ratio_noevo}%) games there was a dino but no evos
+                In {self.noChancellor} ({ratio_nochan}%) games there was no free mana.
                 """
 
     def Test_go(self, deck, i, handsize):
@@ -184,6 +183,7 @@ class Test:
         self.games= 0
         self.grizzlehands= 0
         self.noAllosaurus = 0
+        self.noChancellor = 0
         self.noEvo = 0
 
         for a in range(i):
@@ -194,7 +194,11 @@ class Test:
             Current_game.Combo()
             if Current_game.Allosaurus == 0: self.noAllosaurus += 1
             if Current_game.noEvo == True: self.noEvo += 1
+            if Current_game.free_mana == 0: self.noChancellor += 1
             if Current_game.win == True: 
                 self.win += 1
+            #print(Current_game.hand) # if you want detailed info about each game
+            #print(Current_game)
+            
               
-        print("done")
+        print("Done!")
