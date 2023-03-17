@@ -19,3 +19,8 @@ First of all you need pandas for data processing. Easiest way is going for pip i
 The script is easy and strightforward. It takes the decklist from Deck.txt. The format is the same as in the mtg goldfish so you can just copy-paste the imported decklist. Changing it manually is also OK since most of the cards are unnecessary for T1 combo so they are not even taken into account by the script. Anyway look up for typos, but all the necessary combo pieces are already in the file. 
 
 There are only a few cards scripted (see Converter in Game class). If anything important will be added to the deck, it should be scripted there.
+
+# Changelog
+
+- 1.0 Working app
+- 1.1 Updated hand management
