@@ -156,7 +156,7 @@ class Game:
         #while mana > 0:
 
 class Test:
-    def __init__(self, deck):
+    def __init__(self, deck=None):
         self.deck = deck
         self.win: int
         self.games: int
@@ -164,6 +164,7 @@ class Test:
         self.noAllosaurus: int
         self.noChancellor: int
         self.noEvo: int
+        self.window: Tk()
 
     def __str__(self):
         ratio_win = (self.win/self.games)*100

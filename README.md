@@ -24,3 +24,4 @@ There are only a few cards scripted (see Converter in Game class). If anything i
 
 - 1.0 Working app
 - 1.1 Updated hand management
+- 1.2 Added GUI
